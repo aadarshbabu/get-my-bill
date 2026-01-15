@@ -1,0 +1,193 @@
+{
+  "Index": {
+    "meta_title": "SaaS Template - Le template SaaS parfait pour construire et mettre à l'échelle votre entreprise en toute simplicité.",
+    "meta_description": "Un template gratuit et open-source de landing page pour votre entreprise SaaS, construit avec React, TypeScript, Shadcn UI et Tailwind CSS."
+  },
+  "Navbar": {
+    "sign_in": "Se connecter",
+    "sign_up": "S'inscrire",
+    "product": "Produit",
+    "docs": "Docs",
+    "blog": "Blog",
+    "community": "Communauté",
+    "company": "Entreprise"
+  },
+  "Hero": {
+    "follow_twitter": "Suivez @Ixartz sur Twitter",
+    "title": "Le parfait <important>SaaS template</important> pour construire et mettre à l'échelle votre entreprise en toute simplicité.",
+    "description": "Un template gratuit et open-source de landing page pour votre entreprise SaaS, construit avec React, TypeScript, Shadcn UI et Tailwind CSS.",
+    "primary_button": "Démarrer",
+    "secondary_button": "Mettez une étoile sur GitHub"
+  },
+  "Sponsors": {
+    "title": "Sponsorisé par"
+  },
+  "Features": {
+    "section_subtitle": "Pourquoi choisir GetMyBill ?",
+    "section_title": "L'outil de facturation ultime pour les entreprises en croissance",
+    "section_description": "",
+    "feature1_title": "Rapports conformes à la TVA (GST) :",
+    "feature1_description": "Générez des rapports détaillés conformes à la TVA pour plusieurs numéros de TVA sans effort.",
+    "feature2_title": "Modèles de Factures Personnalisables",
+    "feature2_description": "Personnalisez vos factures avec des modèles faciles à utiliser ou téléchargez votre propre design.",
+    "feature3_title": "Gestion Multi-Organisation",
+    "feature3_description": "Gérez les factures de plusieurs organisations en toute transparence, tout sous un seul compte utilisateur.",
+    "feature4_title": "Analytique Puissante",
+    "feature4_description": "Restez à jour avec les performances de vos factures grâce à des analyses en temps réel sur les factures en attente, payées et en retard, avec des graphiques interactifs.",
+    "feature5_title": "Contrôle d'Accès Basé sur les Rôles",
+    "feature5_description": "Attribuez des rôles aux membres de l'équipe et contrôlez qui peut consulter, modifier ou créer des factures.",
+    "feature6_title": "Accès Cloud À Tout Moment, Partout",
+    "feature6_description": "Travaillez depuis n'importe quel appareil avec un stockage cloud sécurisé et des performances ultra-rapides."
+  },
+  "Pricing": {
+    "section_subtitle": "Tarification",
+    "section_title": "Des plans abordables pour chaque entreprise",
+    "section_description": "Choisissez votre plan et commencez dès aujourd'hui !",
+    "button_text": "Commencer",
+    "comming_soon": "Arrivée bientôt"
+  },
+
+  "PricingPlan": {
+    "free_plan": "Plan Gratuit",
+    "professional_plan": "Plan Professionnel",
+    "premium_plan_name": "Premium",
+    "premium_plan_description": "",
+    "enterprise_plan": "Plan Entreprise",
+    "enterprise_plan_name": "Entreprise",
+    "enterprise_plan_description": "",
+    "free_plan_name": "Gratuit",
+    "free_plan_description": "Pour les particuliers",
+    "price_with_currency": "₹{price}",
+    "feature_invoices": "Créez jusqu'à {number} factures/mois",
+    "feature_report": "Rapport {type}",
+    "feature_unlimited": "Factures illimitées",
+    "feature_templates": "Accédez à {type} modèles",
+    "feature_reports": "Générez des rapports {type}",
+    "feature_gstAccounts": "Supporte {number} compte(s) GST",
+    "feature_analytics": "Analyse {type}",
+    "feature_everythingInProfessional": "Tout dans le plan Professionnel",
+    "feature_templates_customizable": "Modèles personnalisables",
+    "feature_accountManager": "Gestionnaire de compte {type}",
+    "feature_onPremises": "Déploiement sur site",
+    "feature_prioritySupport": "Support prioritaire",
+    "plan_interval_month": "mois",
+    "plan_interval_year": "an",
+    "next_renew_date": "Votre abonnement se renouvelle le {date}"
+  },
+
+  "FAQ": {
+    "item-1-question": "Puis-je gérer plusieurs organisations avec un seul compte ?",
+    "item-1-answer": "Oui ! Vous pouvez ajouter et gérer plusieurs organisations, chacune avec sa propre facturation et ses rapports.",
+    "item-2-question": "Cette plateforme est-elle conforme à la TVA (GST) ?",
+    "item-2-answer": "Absolument ! Notre plateforme est conçue pour faciliter la déclaration de la TVA avec des rapports détaillés prêts pour la TVA.",
+    "item-3-question": "Puis-je télécharger mon propre modèle de facture ?",
+    "item-3-answer": "Oui, vous pouvez personnaliser entièrement vos factures ou télécharger vos propres modèles pour correspondre à votre image de marque.",
+    "item-4-question": "Que se passe-t-il avec mes données si je décide d'annuler ?",
+    "item-4-answer": "Vos données sont stockées en toute sécurité et peuvent être exportées avant d'annuler votre abonnement.",
+    "item-5-question": "Fournissez-vous un support pour les grandes équipes ?",
+    "item-5-answer": "Oui, notre plan Entreprise offre une gestion avancée des rôles et un support dédié pour les grandes organisations."
+  },
+
+  "CTA": {
+    "title": "Vous êtes prêt?",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    "button_text": "Mettez une étoile sur GitHub"
+  },
+  "Footer": {
+    "product": "Produit",
+    "docs": "Docs",
+    "blog": "Blog",
+    "community": "Communauté",
+    "company": "Entreprise",
+    "terms_of_service": "Conditions d'utilisation",
+    "privacy_policy": "Politique de confidentialité",
+    "designed_by": "Designé by <author></author>."
+  },
+  "ProtectFallback": {
+    "not_enough_permission": "Vous n'avez pas les permissions pour effectuer cette action"
+  },
+  "SignIn": {
+    "meta_title": "Se connecter",
+    "meta_description": "Connectez-vous à votre compte avec facilité."
+  },
+  "SignUp": {
+    "meta_title": "S'inscrire",
+    "meta_description": "Créez un compte sans effort grâce à notre processus d'inscription intuitif."
+  },
+  "DashboardLayout": {
+    "home": "Accueil",
+    "todos": "Todos",
+    "members": "Membres",
+    "billing": "Facturation",
+    "settings": "Réglages"
+  },
+  "Dashboard": {
+    "meta_title": "Tableau de bord du SaaS Template",
+    "meta_description": "Un template gratuit et open-source de landing page pour votre entreprise SaaS, construit avec Next.js, TypeScript, Shadcn UI et Tailwind CSS."
+  },
+  "DashboardIndex": {
+    "title_bar": "Tableau de bord",
+    "title_bar_description": "Bienvenue sur votre tableau de bord",
+    "message_state_title": "C'est parti",
+    "message_state_description": "Vous pouvez personnaliser cette page en modifiant le fichier dans <code>dashboard/page.tsx</code>",
+    "message_state_button": "Mettez une étoile sur GitHub"
+  },
+  "UserProfile": {
+    "title_bar": "Profil utilisateur",
+    "title_bar_description": "Afficher et gérer votre profil utilisateur"
+  },
+  "OrganizationProfile": {
+    "title_bar": "Gestion de l’organisation",
+    "title_bar_description": "Gérer votre organisation"
+  },
+  "Billing": {
+    "title_bar": "Facturation",
+    "title_bar_description": "Gérer votre facturation et votre abonnement",
+    "current_section_title": "Plan actuel",
+    "current_section_description": "Ajuster votre plan de paiement pour le mieux répondre à vos besoins",
+    "manage_subscription_button": "Gérer l'abonnement"
+  },
+  "BillingOptions": {
+    "current_plan": "Plan actuel",
+    "upgrade_plan": "Démarrer"
+  },
+  "CheckoutConfirmation": {
+    "title_bar": "Confirmation du paiement",
+    "message_state_title": "Paiement accepté",
+    "message_state_description": "Votre paiement a été traité avec succès. Merci pour votre achat !",
+    "message_state_button": "Revenir à la facturation"
+  },
+  "DataTable": {
+    "no_results": "Aucun résultat."
+  },
+  "Todos": {
+    "title_bar": "Liste de Todos",
+    "title_bar_description": "Afficher et gérer votre liste de todos",
+    "add_todo_button": "Nouveau todo"
+  },
+  "TodoTableColumns": {
+    "open_menu": "Ouvrir le menu",
+    "edit": "Modifier",
+    "delete": "Supprimer",
+    "title_header": "Titre",
+    "message_header": "Message",
+    "created_at_header": "Créé le"
+  },
+  "AddTodo": {
+    "title_bar": "Ajouter une todo",
+    "add_todo_section_title": "Créer une nouvelle todo",
+    "add_todo_section_description": "Remplissez le formulaire ci-dessous pour créer une nouvelle todo"
+  },
+  "EditTodo": {
+    "title_bar": "Editer le todo",
+    "edit_todo_section_title": "Modifier le todo",
+    "edit_todo_section_description": "Remplissez le formulaire ci-dessous pour modifier la todo"
+  },
+  "TodoForm": {
+    "title_label": "Titre",
+    "title_description": "Entrez un titre descriptif pour votre todo.",
+    "message_title": "Message",
+    "message_description": "Entrez un message détaillé pour votre todo.",
+    "submit_button": "Envoyer"
+  }
+}
