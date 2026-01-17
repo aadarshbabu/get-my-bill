@@ -1,4 +1,4 @@
-/* eslint-disable jsonc/sort-keys */{
+/* eslint-disable jsonc/sort-keys */ {
   "compilerOptions": {
     "lib": [
       "dom",
@@ -67,6 +67,7 @@
     ".next/types/**/*.ts",
     "**/*.mts",
     "**/*.mdx",
-    ".next/dev/types/**/*.ts"
+    ".next/dev/types/**/*.ts",
+    "src/components/InvoiceComponent/templates/Template1.jsx"
   ]
 }

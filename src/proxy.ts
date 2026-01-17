@@ -48,12 +48,23 @@ export default function middleware(
       return NextResponse.redirect(redirectUrl);
     }
   }
+  
+  // Apply Clerk Middleware for Auth pages, Protected App pages, AND API routes
   if (
     request.nextUrl.pathname.includes("/sign-in") ||
     request.nextUrl.pathname.includes("/sign-up") ||
-    isProtectedRoute(request)
+    isProtectedRoute(request) ||
+    request.nextUrl.pathname.startsWith("/api") ||
+    request.nextUrl.pathname.startsWith("/trpc")
   ) {
     return clerkMiddleware(async (auth, req) => {
+      // For API routes, we just allow them to pass through.
+      // Clerk has already populated the auth state in the request.
+      // We do NOT want to run intlMiddleware or redirects for APIs.
+      if (req.nextUrl.pathname.startsWith("/api") || req.nextUrl.pathname.startsWith("/trpc")) {
+         return NextResponse.next();
+      }
+
       const authObj = await auth();
 
       if (isProtectedRoute(req)) {

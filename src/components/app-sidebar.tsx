@@ -25,6 +25,8 @@ import {
   SidebarHeader,
   SidebarRail,
 } from "@/components/ui/sidebar"
+import { useTRPC } from "@/server/trpc/client"
+import { useQuery } from "@tanstack/react-query"
 
 // This is sample data.
 const data = {
@@ -157,10 +159,16 @@ const data = {
 }
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
+  const trpc = useTRPC();
+
+  // 3. Read from cache instantly
+  const { data: testData } = useQuery(trpc.protectedHello.queryOptions());
+  console.log("data", testData);
+
   return (
     <Sidebar collapsible="icon" {...props}>
       <SidebarHeader>
-        <TeamSwitcher teams={data.teams} />
+        <TeamSwitcher teams={data?.teams} />
       </SidebarHeader>
       <SidebarContent>
         <NavMain items={data.navMain} />
