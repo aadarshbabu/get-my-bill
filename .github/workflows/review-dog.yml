@@ -1,4 +1,4 @@
-name: Reviewdog Code Review
+name: Reviewdog Setup Test
 
 on:
   pull_request:
@@ -14,21 +14,11 @@ jobs:
       pull-requests: write
 
     steps:
-      - name: Checkout code
+      - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20
-          cache: npm
+      - name: Setup Reviewdog
+        uses: reviewdog/action-setup@v1
 
-      - name: Install dependencies
-        run: npm ci
-
-      - name: ESLint (Reviewdog)
-        uses: reviewdog/action-eslint@v1
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          reporter: github-pr-review
-          fail_on_error: false
+      - name: Verify Reviewdog installation
+        run: reviewdog --version
