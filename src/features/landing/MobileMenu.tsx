@@ -9,7 +9,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { useMenu } from "@/hooks/UseMenu";
+import { useMenu } from "@/components/hooks/UseMenu";
 import { AppConfig } from "@/utils/AppConfig";
 import { useTranslations } from "next-intl";
 import Link from "next/link";

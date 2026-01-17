@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 
-import { useMenu } from "@/hooks/UseMenu";
+import { useMenu } from "@/components/hooks/UseMenu";
 import { cn } from "@/utils/Helpers";
 import { NavigationMenu } from "@/components/ui/navigation-menu";
 import { NavigationMenuList } from "@radix-ui/react-navigation-menu";
