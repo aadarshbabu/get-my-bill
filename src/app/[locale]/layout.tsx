@@ -4,6 +4,7 @@ import { NextIntlClientProvider } from "next-intl";
 import { getMessages, setRequestLocale } from "next-intl/server";
 
 import { AllLocales } from "@/utils/AppConfig";
+import { TRPCReactProvider } from "@/server/trpc/client";
 
 export const metadata: Metadata = {
   icons: [
@@ -62,7 +63,9 @@ export default async function RootLayout(props: {
           locale={locale}
           messages={messages}
         >
-          {props.children}
+          <TRPCReactProvider>
+            {props.children}
+          </TRPCReactProvider>
           {/* <DemoBadge /> */}
         </NextIntlClientProvider>
       </body>

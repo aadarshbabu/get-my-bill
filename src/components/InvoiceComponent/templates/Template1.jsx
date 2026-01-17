@@ -1,8 +1,8 @@
 
 import React from 'react';
 import BaseTemplate from './BaseTemplate';
-import { formatCurrency } from '../../utils/formatCurrency';
-import { numberToWords } from '../../utils/numberToWords';
+import { formatCurrency } from '@/utils/formatCurrency';
+import { numberToWords } from '@/utils/numberToWords';
 
 const Template1 = ({ data }) => {
   const {
