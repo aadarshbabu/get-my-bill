@@ -1,5 +1,6 @@
 'use client';
 
+import { use } from 'react';
 import { enUS, frFR } from '@clerk/localizations';
 import { ClerkProvider } from '@clerk/nextjs';
 
@@ -7,23 +8,26 @@ import { AppConfig } from '@/utils/AppConfig';
 
 export default function AuthLayout(props: {
   children: React.ReactNode;
-  params: { locale: string };
+  params: Promise<{ locale: string }>;
 }) {
+  // In Next.js 15+, params is a Promise. In Client Components, use React.use() to unwrap
+  const { locale } = use(props.params);
+
   let clerkLocale = enUS;
   let signInUrl = '/sign-in';
   let signUpUrl = '/sign-up';
   let dashboardUrl = '/dashboard';
   let afterSignOutUrl = '/';
 
-  if (props.params.locale === 'fr') {
+  if (locale === 'fr') {
     clerkLocale = frFR;
   }
 
-  if (props.params.locale !== AppConfig.defaultLocale) {
-    signInUrl = `/${props.params.locale}${signInUrl}`;
-    signUpUrl = `/${props.params.locale}${signUpUrl}`;
-    dashboardUrl = `/${props.params.locale}${dashboardUrl}`;
-    afterSignOutUrl = `/${props.params.locale}${afterSignOutUrl}`;
+  if (locale !== AppConfig.defaultLocale) {
+    signInUrl = `/${locale}${signInUrl}`;
+    signUpUrl = `/${locale}${signUpUrl}`;
+    dashboardUrl = `/${locale}${dashboardUrl}`;
+    afterSignOutUrl = `/${locale}${afterSignOutUrl}`;
   }
 
   return (
@@ -40,3 +44,4 @@ export default function AuthLayout(props: {
     </ClerkProvider>
   );
 }
+

@@ -2,7 +2,7 @@ import { fileURLToPath } from "node:url";
 import withBundleAnalyzer from "@next/bundle-analyzer";
 import { withSentryConfig } from "@sentry/nextjs";
 import createJiti from "jiti";
-import withNextIntl from "next-intl/plugin";
+import createNextIntlPlugin from "next-intl/plugin";
 // import createMDX from "@next/mdx";
 import { createMDX } from "fumadocs-mdx/next";
 
@@ -10,7 +10,7 @@ const jiti = createJiti(fileURLToPath(import.meta.url));
 
 jiti("./src/libs/Env");
 
-const withNextIntlConfig = withNextIntl("./src/libs/i18n.ts");
+const withNextIntl = createNextIntlPlugin("./src/i18n/request.ts");
 
 const bundleAnalyzer = withBundleAnalyzer({
   enabled: process.env.ANALYZE === "true",
@@ -18,13 +18,14 @@ const bundleAnalyzer = withBundleAnalyzer({
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  eslint: {
-    dirs: ["."],
-  },
   poweredByHeader: false,
   reactStrictMode: true,
-  experimental: {
-    serverComponentsExternalPackages: ["@electric-sql/pglite"],
+  serverExternalPackages: ["@electric-sql/pglite"],
+  turbopack: {
+    root: process.cwd(),
+    resolveAlias: {
+      "next-intl/config": "./src/i18n/request.ts",
+    },
   },
 };
 
@@ -33,25 +34,22 @@ const withMDXConfig = createMDX({
 });
 
 // Combine MDX configuration with other configurations
-const finalConfig = withMDXConfig(
-  withSentryConfig(
-    bundleAnalyzer(
-      withNextIntlConfig({
-        ...nextConfig, // Add Next.js config here
-      })
-    ),
-    {
-      // Sentry config
-      org: "nextjs-boilerplate-org",
-      project: "nextjs-boilerplate",
-      silent: !process.env.CI,
-      widenClientFileUpload: true,
-      tunnelRoute: "/monitoring",
-      hideSourceMaps: true,
-      disableLogger: true,
-      automaticVercelMonitors: true,
-      telemetry: false,
-    }
+// IMPORTANT: next-intl must be the OUTERMOST wrapper to properly detect turbopack config
+const finalConfig = withNextIntl(
+  withMDXConfig(
+    withSentryConfig(
+      bundleAnalyzer(nextConfig),
+      {
+        // Sentry build options
+        org: "nextjs-boilerplate-org",
+        project: "nextjs-boilerplate",
+        silent: !process.env.CI,
+        widenClientFileUpload: true,
+        tunnelRoute: "/monitoring",
+        hideSourceMaps: true,
+        telemetry: false,
+      }
+    )
   )
 );
 

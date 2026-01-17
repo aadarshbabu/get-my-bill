@@ -1,10 +1,18 @@
+'use client';
+
+import { use } from 'react';
 import { OrganizationProfile } from '@clerk/nextjs';
 import { useTranslations } from 'next-intl';
 
 import { TitleBar } from '@/features/dashboard/TitleBar';
 import { getI18nPath } from '@/utils/Helpers';
 
-const OrganizationProfilePage = (props: { params: { locale: string } }) => {
+type Props = {
+  params: Promise<{ locale: string }>;
+};
+
+export default function OrganizationProfilePage({ params }: Props) {
+  const { locale } = use(params);
   const t = useTranslations('OrganizationProfile');
 
   return (
@@ -18,7 +26,7 @@ const OrganizationProfilePage = (props: { params: { locale: string } }) => {
         routing="path"
         path={getI18nPath(
           '/dashboard/organization-profile',
-          props.params.locale,
+          locale,
         )}
         afterLeaveOrganizationUrl="/onboarding/organization-selection"
         appearance={{
@@ -30,6 +38,5 @@ const OrganizationProfilePage = (props: { params: { locale: string } }) => {
       />
     </>
   );
-};
+}
 
-export default OrganizationProfilePage;

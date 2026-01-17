@@ -1,19 +1,18 @@
-// 'use client';
-import React from 'react';
-import { unstable_setRequestLocale } from 'next-intl/server';
+import { setRequestLocale } from 'next-intl/server';
 import About from '@/content/about.mdx';
 
-interface AboutPageProps {
-  params: {
-    locale: string;
-  };
-}
+type Props = {
+  params: Promise<{ locale: string }>;
+};
 
-export default function page({ params: { locale } }: AboutPageProps) {
-  unstable_setRequestLocale(locale);
+export default async function AboutPage({ params }: Props) {
+  const { locale } = await params;
+  setRequestLocale(locale);
+
   return (
     <div className=" px-3 py-10">
       <About />
     </div>
   );
 }
+

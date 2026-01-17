@@ -39,23 +39,21 @@ export const Navbar = () => {
       >
         <div className=" flex flex-row max-lg:flex-col max-lg:block">
           <NavigationMenuItem>
-            <Link href="/sign-up" legacyBehavior passHref>
-              <NavigationMenuLink
-                className={cn(navigationMenuTriggerStyle(), "hover:bg-inherit")}
-              >
-                {t("product")}
-              </NavigationMenuLink>
-            </Link>
+            <NavigationMenuLink
+              asChild
+              className={cn(navigationMenuTriggerStyle(), "hover:bg-inherit")}
+            >
+              <Link href="/sign-up">{t("product")}</Link>
+            </NavigationMenuLink>
           </NavigationMenuItem>
 
           <NavigationMenuItem>
-            <Link href="/docs" legacyBehavior passHref >
-              <NavigationMenuLink
-                className={cn(navigationMenuTriggerStyle(), "hover:bg-inherit")}
-              >
-                {t("docs")}
-              </NavigationMenuLink>
-            </Link>
+            <NavigationMenuLink
+              asChild
+              className={cn(navigationMenuTriggerStyle(), "hover:bg-inherit")}
+            >
+              <Link href="/docs">{t("docs")}</Link>
+            </NavigationMenuLink>
           </NavigationMenuItem>
 
           {/* <NavigationMenuItem>
@@ -69,13 +67,12 @@ export const Navbar = () => {
           </NavigationMenuItem> */}
 
           <NavigationMenuItem>
-            <Link href="/pages/about" legacyBehavior passHref>
-              <NavigationMenuLink
-                className={cn(navigationMenuTriggerStyle(), "hover:bg-inherit")}
-              >
-                {t("company")}
-              </NavigationMenuLink>
-            </Link>
+            <NavigationMenuLink
+              asChild
+              className={cn(navigationMenuTriggerStyle(), "hover:bg-inherit")}
+            >
+              <Link href="/pages/about">{t("company")}</Link>
+            </NavigationMenuLink>
           </NavigationMenuItem>
         </div>
       </CenteredMenu>
