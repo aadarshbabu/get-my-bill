@@ -1,14 +1,13 @@
-// "use client";
-import { unstable_setRequestLocale } from 'next-intl/server';
+import { setRequestLocale } from 'next-intl/server';
 import PrivacyPolicy from "@/content/privacyPolicy.mdx";
 
-interface AboutPageProps {
-  params: {
-    locale: string;
-  };
-}
-export default function page({ params: { locale } }: AboutPageProps) {
-  unstable_setRequestLocale(locale);
+type Props = {
+  params: Promise<{ locale: string }>;
+};
+
+export default async function PrivacyPolicyPage({ params }: Props) {
+  const { locale } = await params;
+  setRequestLocale(locale);
 
   return (
     <div>
@@ -16,3 +15,4 @@ export default function page({ params: { locale } }: AboutPageProps) {
     </div>
   );
 }
+

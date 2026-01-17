@@ -1,9 +1,14 @@
 import { OrganizationList } from '@clerk/nextjs';
 import { getTranslations } from 'next-intl/server';
 
-export async function generateMetadata(props: { params: { locale: string } }) {
+type Props = {
+  params: Promise<{ locale: string }>;
+};
+
+export async function generateMetadata({ params }: Props) {
+  const { locale } = await params;
   const t = await getTranslations({
-    locale: props.params.locale,
+    locale,
     namespace: 'Dashboard',
   });
 
@@ -27,3 +32,4 @@ const OrganizationSelectionPage = () => (
 export const dynamic = 'force-dynamic';
 
 export default OrganizationSelectionPage;
+

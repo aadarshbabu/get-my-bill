@@ -1,14 +1,13 @@
-import React from "react";
-import { unstable_setRequestLocale } from 'next-intl/server';
+import { setRequestLocale } from 'next-intl/server';
 import TermsOfServices from "@/content/termsOfService.mdx";
 
-interface AboutPageProps {
-  params: {
-    locale: string;
-  };
-}
-export default function page({ params: { locale } }: AboutPageProps) {
-  unstable_setRequestLocale(locale);
+type Props = {
+  params: Promise<{ locale: string }>;
+};
+
+export default async function TermsOfServicePage({ params }: Props) {
+  const { locale } = await params;
+  setRequestLocale(locale);
 
   return (
     <div className=" py-12 px-8">
@@ -16,3 +15,4 @@ export default function page({ params: { locale } }: AboutPageProps) {
     </div>
   );
 }
+

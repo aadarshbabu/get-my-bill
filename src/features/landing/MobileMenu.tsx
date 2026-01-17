@@ -9,7 +9,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { useMenu } from "@/hooks/UseMenu";
+import { useMenu } from "@/components/hooks/UseMenu";
 import { AppConfig } from "@/utils/AppConfig";
 import { useTranslations } from "next-intl";
 import Link from "next/link";
@@ -26,32 +26,22 @@ export function MobileMenu() {
         </div>
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-80">
-        <DropdownMenuLabel>
-          <Link href="/" legacyBehavior passHref>
-            {AppConfig.name}
-          </Link>
+        <DropdownMenuLabel asChild>
+          <Link href="/">{AppConfig.name}</Link>
         </DropdownMenuLabel>
         <DropdownMenuSeparator />
         <DropdownMenuGroup>
-          <DropdownMenuItem>
-            <Link href="/docs" legacyBehavior passHref>
-              {t("docs")}
-            </Link>
+          <DropdownMenuItem asChild>
+            <Link href="/docs">{t("docs")}</Link>
           </DropdownMenuItem>
-          <DropdownMenuItem>
-            <Link href="/blog" legacyBehavior passHref>
-              {t("blog")}
-            </Link>
+          <DropdownMenuItem asChild>
+            <Link href="/blog">{t("blog")}</Link>
           </DropdownMenuItem>
-          <DropdownMenuItem>
-            <Link href="/pages/about" legacyBehavior passHref>
-              {t("company")}
-            </Link>
+          <DropdownMenuItem asChild>
+            <Link href="/pages/about">{t("company")}</Link>
           </DropdownMenuItem>
-          <DropdownMenuItem>
-            <Link href="/product" legacyBehavior passHref>
-              {t("product")}
-            </Link>
+          <DropdownMenuItem asChild>
+            <Link href="/product">{t("product")}</Link>
           </DropdownMenuItem>
         </DropdownMenuGroup>
         <DropdownMenuSeparator />

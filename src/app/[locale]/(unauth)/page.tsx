@@ -1,4 +1,4 @@
-import { getTranslations, unstable_setRequestLocale } from "next-intl/server";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 
 import { CTA } from "@/templates/CTA";
 // import { DemoBanner } from "@/templates/DemoBanner";
@@ -8,9 +8,14 @@ import { Hero } from "@/templates/Hero";
 import { Pricing } from "@/templates/Pricing";
 import { Sponsors } from "@/templates/Sponsors";
 
-export async function generateMetadata(props: { params: { locale: string } }) {
+type Props = {
+  params: Promise<{ locale: string }>;
+};
+
+export async function generateMetadata({ params }: Props) {
+  const { locale } = await params;
   const t = await getTranslations({
-    locale: props.params.locale,
+    locale,
     namespace: "Index",
   });
 
@@ -20,8 +25,9 @@ export async function generateMetadata(props: { params: { locale: string } }) {
   };
 }
 
-const IndexPage = (props: { params: { locale: string } }) => {
-  unstable_setRequestLocale(props.params.locale);
+export default async function IndexPage({ params }: Props) {
+  const { locale } = await params;
+  setRequestLocale(locale);
 
   return (
     <>
@@ -36,6 +42,5 @@ const IndexPage = (props: { params: { locale: string } }) => {
       {/* <Footer /> */}
     </>
   );
-};
+}
 
-export default IndexPage;

@@ -3,9 +3,14 @@ import { getTranslations } from 'next-intl/server';
 
 import { DashboardHeader } from '@/features/dashboard/DashboardHeader';
 
-export async function generateMetadata(props: { params: { locale: string } }) {
+type Props = {
+  params: Promise<{ locale: string }>;
+};
+
+export async function generateMetadata({ params }: Props) {
+  const { locale } = await params;
   const t = await getTranslations({
-    locale: props.params.locale,
+    locale,
     namespace: 'Dashboard',
   });
 
@@ -53,3 +58,4 @@ export default function DashboardLayout(props: { children: React.ReactNode }) {
 }
 
 export const dynamic = 'force-dynamic';
+
