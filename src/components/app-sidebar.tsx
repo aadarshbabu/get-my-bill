@@ -3,15 +3,14 @@
 import * as React from "react"
 import {
   AudioWaveform,
-  BookOpen,
-  Bot,
   Command,
-  Frame,
+  FileText,
+  FolderOpen,
   GalleryVerticalEnd,
-  Map,
-  PieChart,
+  LayoutDashboard,
   Settings2,
-  SquareTerminal,
+  // ShoppingBag,
+  Users,
 } from "lucide-react"
 
 import { NavMain } from "@/components/nav-main"
@@ -27,17 +26,13 @@ import {
 } from "@/components/ui/sidebar"
 import { useTRPC } from "@/server/trpc/client"
 import { useQuery } from "@tanstack/react-query"
+import { useUser } from "@clerk/nextjs"
 
 // This is sample data.
 const data = {
-  user: {
-    name: "shadcn",
-    email: "m@example.com",
-    avatar: "/avatars/shadcn.jpg",
-  },
   teams: [
     {
-      name: "Acme Inc",
+      name: "GetMyBill",
       logo: GalleryVerticalEnd,
       plan: "Enterprise",
     },
@@ -53,64 +48,42 @@ const data = {
     },
   ],
   navMain: [
+    // {
+    //   title: "Purchase",
+    //   url: "#",
+    //   icon: ShoppingBag,
+    //   isActive: true,
+    //   items: [
+    //     {
+    //       title: "Purchase Invoices",
+    //       url: "#",
+    //     },
+    //     {
+    //       title: "Purchase Orders",
+    //       url: "#",
+    //     },
+    //     {
+    //       title: "Payment Out",
+    //       url: "#",
+    //     },
+    //   ],
+    // },
     {
-      title: "Playground",
+      title: "Reports",
       url: "#",
-      icon: SquareTerminal,
+      icon: FolderOpen,
       isActive: true,
       items: [
         {
-          title: "History",
+          title: "Summary",
           url: "#",
         },
         {
-          title: "Starred",
+          title: "GST Reports",
           url: "#",
         },
         {
-          title: "Settings",
-          url: "#",
-        },
-      ],
-    },
-    {
-      title: "Models",
-      url: "#",
-      icon: Bot,
-      items: [
-        {
-          title: "Genesis",
-          url: "#",
-        },
-        {
-          title: "Explorer",
-          url: "#",
-        },
-        {
-          title: "Quantum",
-          url: "#",
-        },
-      ],
-    },
-    {
-      title: "Documentation",
-      url: "#",
-      icon: BookOpen,
-      items: [
-        {
-          title: "Introduction",
-          url: "#",
-        },
-        {
-          title: "Get Started",
-          url: "#",
-        },
-        {
-          title: "Tutorials",
-          url: "#",
-        },
-        {
-          title: "Changelog",
+          title: "Transaction Reports",
           url: "#",
         },
       ],
@@ -119,47 +92,55 @@ const data = {
       title: "Settings",
       url: "#",
       icon: Settings2,
+      isActive: false,
       items: [
         {
           title: "General",
           url: "#",
         },
         {
-          title: "Team",
+          title: "Manage Users",
           url: "#",
         },
         {
-          title: "Billing",
+          title: "Invoice Settings",
           url: "#",
         },
         {
-          title: "Limits",
+          title: "Manage Business",
           url: "#",
         },
       ],
     },
   ],
-  projects: [
+  general: [
     {
-      name: "Design Engineering",
-      url: "#",
-      icon: Frame,
+      name: "Dashboard",
+      url: "/dashboard",
+      icon: LayoutDashboard,
     },
     {
-      name: "Sales & Marketing",
-      url: "#",
-      icon: PieChart,
+      name: "Customers",
+      url: "/customers",
+      icon: Users,
     },
     {
-      name: "Travel",
-      url: "#",
-      icon: Map,
+      name: "Invoices",
+      url: "/invoices",
+      icon: FileText,
     },
   ],
 }
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   const trpc = useTRPC();
+  const { user } = useUser();
+
+  const profile = {
+    name: user?.firstName ?? "Unknown",
+    email: user?.emailAddresses[0]?.emailAddress ?? "Unknown",
+    avatar: user?.imageUrl ?? "/avatars/shadcn.jpg",
+  }
 
   // 3. Read from cache instantly
   const { data: testData } = useQuery(trpc.protectedHello.queryOptions());
@@ -170,12 +151,12 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
       <SidebarHeader>
         <TeamSwitcher teams={data?.teams} />
       </SidebarHeader>
-      <SidebarContent>
+      <SidebarContent className="group-data-[collapsible=icon]:gap-0">
+        <NavProjects general={data.general} />
         <NavMain items={data.navMain} />
-        <NavProjects projects={data.projects} />
       </SidebarContent>
       <SidebarFooter>
-        <NavUser user={data.user} />
+        <NavUser user={profile} />
       </SidebarFooter>
       <SidebarRail />
     </Sidebar>

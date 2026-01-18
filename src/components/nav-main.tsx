@@ -33,8 +33,8 @@ export function NavMain({
   }[]
 }) {
   return (
-    <SidebarGroup>
-      <SidebarGroupLabel>Platform</SidebarGroupLabel>
+    <SidebarGroup className="group-data-[collapsible=icon]:pt-0">
+      <SidebarGroupLabel className="group-data-[collapsible=icon]:hidden">Platform</SidebarGroupLabel>
       <SidebarMenu>
         {items.map((item) => (
           <Collapsible
