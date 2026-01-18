@@ -25,13 +25,13 @@ export function NavProjects({
   const { isMobile } = useSidebar()
 
   return (
-    <SidebarGroup>
+    <SidebarGroup className="group-data-[collapsible=icon]:pb-0">
       <SidebarMenu>
         {/* Master Create Button */}
         <SidebarMenuItem>
           <SidebarMenuButton
             tooltip="Create Bill/Invoice"
-            className="bg-primary text-primary-foreground hover:bg-primary/90 hover:text-primary-foreground active:bg-primary/90 active:text-primary-foreground min-w-8 duration-200 ease-linear"
+            className="bg-primary text-primary-foreground hover:bg-primary/90 hover:text-primary-foreground active:bg-primary/90 active:text-primary-foreground min-w-8 duration-200 ease-linear group-data-[collapsible=icon]:mb-2"
           >
             <IconCirclePlusFilled />
             <span>Create Bill/Invoice</span>
